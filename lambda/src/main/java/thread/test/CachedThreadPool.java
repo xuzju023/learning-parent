@@ -1,4 +1,4 @@
-package thread.model.threadPool;
+package thread.test;
 
 import thread.model.LiftOff;
 
@@ -11,5 +11,6 @@ public class CachedThreadPool {
         for (int i = 0; i <5 ; i++) {
             service.execute(new LiftOff());
         }
+        service.shutdown();
     }
 }
