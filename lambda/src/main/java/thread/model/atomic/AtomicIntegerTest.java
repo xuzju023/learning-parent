@@ -19,7 +19,7 @@ public class AtomicIntegerTest extends Thread {
         return i;
         //return i.get();
     }
-
+    // test by add synchronized or not
     public synchronized void increment() {
         i++;
         //i.getAndIncrement();
