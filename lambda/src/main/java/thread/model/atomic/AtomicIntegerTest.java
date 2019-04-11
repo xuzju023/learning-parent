@@ -21,7 +21,7 @@ public class AtomicIntegerTest extends Thread {
     }
     // test by add synchronized or not
     public synchronized void increment() {
-        i++;
+        i++; //非原子操作 有3个步骤:1.读内存中的i 2.拷贝到高速缓存 3 执行并写入内存
         //i.getAndIncrement();
     }
 
