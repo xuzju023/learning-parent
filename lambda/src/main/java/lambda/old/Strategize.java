@@ -23,6 +23,7 @@ public class Strategize {
                 msg -> msg.substring(0, 5), // [3]
                 Unrelated::twice // [4]
         };
+        Strategy a=msg->msg;
         Strategize s = new Strategize("Hello there");
         s.communicate();
         for(Strategy newStrategy : strategies) {
