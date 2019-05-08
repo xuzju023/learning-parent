@@ -1,3 +1,13 @@
 endpoints:
   shutdown:
     enabled: true
+spring:
+  application:
+    name: test-service
+eureka:
+  client:
+    service-url:
+      #defaultZone: http://${eureka.instance.hostname:eureka.einwin.com}:${eureka.server.port:18761}/eureka/
+      defaultZone: http://eureka.einwin.com:18761/eureka/
+server:
+  port: 10001
