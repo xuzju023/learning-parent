@@ -12,6 +12,7 @@
         <module>lambda</module>
         <module>redis</module>
         <module>thread</module>
+        <module>springboot</module>
     </modules>
 
 
