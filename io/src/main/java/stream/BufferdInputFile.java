@@ -17,6 +17,7 @@ public class BufferdInputFile {
     }
 
     public static void main(String[] args) throws  IOException{
+
         System.out.println(read("G:\\prj\\learning-parent\\io\\src\\main\\java\\stream\\BufferdInputFile.java"));
     }
 }
