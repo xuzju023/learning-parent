@@ -15,8 +15,8 @@ public class CriticalSection {
 
         service.execute(pm1);
         service.execute(pm2);
-        service.execute(pcheck1);
-        service.execute(pcheck2);
+        //service.execute(pcheck1);
+        //service.execute(pcheck2);
 
         try {
             TimeUnit.MILLISECONDS.sleep(500);
