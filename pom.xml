@@ -12,7 +12,9 @@
         <module>lambda</module>
         <module>redis</module>
         <module>thread</module>
+        <module>eureka-server</module>
         <module>springboot</module>
+        <module>service-provider</module>
     </modules>
 
 

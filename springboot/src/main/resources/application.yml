@@ -1,13 +1,34 @@
 endpoints:
   shutdown:
     enabled: true
+
+
 spring:
   application:
-    name: test-service
+    name: test-role-service
+  cloud:
+    loadbalancer:
+      retry:
+        enabled: true
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 2000 #熔断 timeout
+ribbon:
+  ConnectTimeout: 500 #请求连接的超时时间。
+  ReadTimeout: 500 #请求处理的超时时间。
+  MaxAutoRetries: 3 #对当前实例的重试次数
+  MaxAutoRetriesNextServer: 0 #切换实例的重试次数
+
 eureka:
   client:
     service-url:
-      #defaultZone: http://${eureka.instance.hostname:eureka.einwin.com}:${eureka.server.port:18761}/eureka/
-      defaultZone: http://eureka.einwin.com:18761/eureka/
+      defaultZone: http://192.168.5.161:10010/eureka/
+  instance:
+    prefer-ip-address: true #用ip作为host
 server:
   port: 10001

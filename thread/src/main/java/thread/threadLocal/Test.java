@@ -1,8 +1,12 @@
 package thread.threadLocal;
 
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
+
+import javax.swing.text.StyledEditorKit;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
+
 
 /**
  * @Author: XuZhiJun
@@ -12,10 +16,22 @@ import java.util.concurrent.TimeUnit;
 public class Test { 
     public static void main(String[] args) throws Exception{
         ExecutorService exec = Executors.newCachedThreadPool();
-        for (int i = 0; i <5 ; i++) {
+        /*for (int i = 0; i <5 ; i++) {
             exec.execute(new Accessor(i));
         }
-        TimeUnit.MILLISECONDS.sleep(3);
-        exec.shutdown();
+        TimeUnit.SECONDS.sleep(3);
+        exec.shutdownNow();*/
+       /* for (int i = 0; i <3 ; i++) {
+            exec.execute(new Thread(){
+
+                @Override
+                public void run() {
+                    System.out.println(ThreadLocalVariableHolder.get());
+                }
+            });
+        }*/
+        System.out.println(ThreadLocalVariableHolder.get());
+        System.out.println(ThreadLocalVariableHolder.get());
+        System.out.println(ThreadLocalVariableHolder.get());
     }
 }

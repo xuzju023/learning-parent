@@ -1,4 +1,4 @@
-package com.xzj.lerning;
+package com.xzj.learning;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,8 +8,6 @@ import org.springframework.cloud.netflix.feign.EnableFeignClients;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-//@EnableCircuitBreaker
-@EnableFeignClients
 public class LerningApplication {
 
 	public static void main(String[] args) {

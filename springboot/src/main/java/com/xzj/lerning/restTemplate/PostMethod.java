@@ -13,7 +13,7 @@ import java.util.Map;
  */
 public class PostMethod {
 
-    public static void main(String[] args) {
+    public static void test(String[] args) {
         RestTemplate restTemplate = new RestTemplate();
         //url requestBody responseType
         ResponseEntity<String> response = restTemplate.postForEntity("http://~~~", new User(), String.class);

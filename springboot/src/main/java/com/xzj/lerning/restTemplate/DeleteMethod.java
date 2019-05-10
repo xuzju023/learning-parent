@@ -11,7 +11,7 @@ import java.util.HashMap;
  */
 public class DeleteMethod {
 
-    public static void main(String[] args) {
+    public static void test(String[] args) {
         RestTemplate restTemplate = new RestTemplate();
 
         restTemplate.delete("http://USER-SERVICE?id={1}",13);

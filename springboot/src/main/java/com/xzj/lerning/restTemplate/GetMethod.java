@@ -11,7 +11,7 @@ import java.util.HashMap;
  * @Date: Created in 9:29 2019/5/8
  */
 public class GetMethod {
-    public static void main(String[] args) {
+    public static void test(String[] args) {
         RestTemplate restTemplate = new RestTemplate();
         //1.返回responseEntity
         ResponseEntity<String> response = restTemplate.getForEntity("http://USER-SERVICE/user? name={1}", String.class, "xzj");
