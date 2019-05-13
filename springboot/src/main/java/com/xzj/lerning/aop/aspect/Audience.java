@@ -5,8 +5,10 @@ import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
 
 @Aspect
-@Component
+//@Component
 public class Audience {
+    private Integer counter=0;
+
     @Pointcut(value="execution(* com.xzj.lerning.aop.Performance.perform(..))")
     public void pointCut(){};
     //@Before(value = "pointCut()")
@@ -29,5 +31,10 @@ public class Audience {
         } catch (Throwable throwable) {
             System.out.println("退票~");
         }
+    }
+    @After(value = "execution(* com.xzj.lerning.aop.Performance.handClap(int))&&args(number)")
+    public void countHandClap(int number){
+        counter+=number;
+        System.out.println("总鼓掌次数: "+counter);
     }
 }
