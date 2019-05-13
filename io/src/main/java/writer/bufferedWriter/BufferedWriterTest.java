@@ -22,9 +22,10 @@ public class BufferedWriterTest {
 //
 //        5. PrintWriter的构造方法更广。
 
-        //BufferedWriter writer = new BufferedWriter(new FileWriter("./io/src/main/java/2.txt"));
+        //bufferedWriter效率比FileWriter高
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("./io/src/main/java/2.txt"));
 
-        PrintWriter writer = new PrintWriter(new FileWriter("./io/src/main/java/2.txt"));
+        PrintWriter writer = new PrintWriter(bufferedWriter);
         //StringReader reader = new StringReader("今天天气不错sdfds");
         BufferedReader reader = new BufferedReader(new FileReader("./io/src/main/java/1.txt"));
         //int a;
@@ -36,5 +37,7 @@ public class BufferedWriterTest {
         }
         writer.close();
         reader.close();
+        //调用close方法 清空缓冲区
+        bufferedWriter.close();
     }
 }

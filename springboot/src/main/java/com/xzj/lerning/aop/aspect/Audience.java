@@ -10,7 +10,7 @@ public class Audience {
     private Integer counter=0;
 
     @Pointcut(value="execution(* com.xzj.lerning.aop.Performance.perform(..))")
-    public void pointCut(){};
+    public void pointCut(){}
     //@Before(value = "pointCut()")
     public void beforePerform(){
         System.out.println("请保持手机静音");
