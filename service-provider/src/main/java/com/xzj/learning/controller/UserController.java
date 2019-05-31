@@ -12,9 +12,11 @@ import java.util.concurrent.TimeUnit;
  */
 @RestController
 public class UserController implements UserRemoteService {
+    public static int count=0;
     @Override
     public String getAllUserInfo() {
         try {
+            System.out.println(++count);
             //TimeUnit.SECONDS.sleep(3);
         } catch (Exception e) {
             e.printStackTrace();

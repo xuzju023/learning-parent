@@ -1,9 +1,6 @@
-endpoints:
-  shutdown:
-    enabled: true
 spring:
   application:
-    name: test-user-service
+    name: zuul-gateway
 eureka:
   client:
     service-url:
@@ -14,4 +11,21 @@ eureka:
     lease-expiration-duration-in-seconds: 20 #心跳终结最大时间 默认90
     lease-renewal-interval-in-seconds: 10 #心跳间隔 默认30
 server:
-  port: 10004
+  port: 5555
+
+#熔断超时时间
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutIn:
+              Milliseconds: 5000
+
+zuul:
+  routes:
+    test-role-service:
+      path: /service-role/**
+    test-user-service:
+      path: /service-user/**

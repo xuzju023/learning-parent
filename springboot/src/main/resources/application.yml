@@ -6,23 +6,21 @@ endpoints:
 spring:
   application:
     name: test-role-service
-  cloud:
-    loadbalancer:
-      retry:
-        enabled: true
 
+#重试
+
+
+#熔断
 hystrix:
   command:
     default:
       execution:
         isolation:
           thread:
-            timeoutInMilliseconds: 2000 #熔断 timeout
-ribbon:
-  ConnectTimeout: 500 #请求连接的超时时间。
-  ReadTimeout: 500 #请求处理的超时时间。
-  MaxAutoRetries: 3 #对当前实例的重试次数
-  MaxAutoRetriesNextServer: 0 #切换实例的重试次数
+            timeoutInMilliseconds: 5000 #熔断 timeout
+
+
+
 
 eureka:
   client:

@@ -13,6 +13,7 @@ import org.springframework.web.client.RestTemplate;
  * @Date: Created in 11:27 2019/5/10
  */
 @RestController
+@RequestMapping("role")
 public class RoleController {
     @Autowired
     private UserClient userClient;
