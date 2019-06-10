@@ -17,6 +17,7 @@
         <module>service-provider</module>
         <module>zuul-gateway</module>
         <module>my-test</module>
+        <module>quartz</module>
     </modules>
 
 
