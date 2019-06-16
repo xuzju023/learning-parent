@@ -1,5 +1,6 @@
 package com.xzj.lerning.restTemplate;
 
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.HashMap;
@@ -10,7 +11,6 @@ import java.util.HashMap;
  * @Date: Created in 10:07 2019/5/8
  */
 public class DeleteMethod {
-
     public static void test(String[] args) {
         RestTemplate restTemplate = new RestTemplate();
 

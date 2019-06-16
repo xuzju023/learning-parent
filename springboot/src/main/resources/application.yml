@@ -6,6 +6,12 @@ endpoints:
 spring:
   application:
     name: test-role-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/test
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+
 
 #重试
 
