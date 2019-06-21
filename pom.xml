@@ -19,6 +19,8 @@
         <module>my-test</module>
         <module>socket</module>
         <module>quartz</module>
+        <module>mysql</module>
+        <module>rabbimq</module>
     </modules>
 
 
