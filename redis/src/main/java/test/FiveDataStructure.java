@@ -16,6 +16,7 @@ import java.io.ObjectOutputStream;
  * @Date: Created in 10:19 2019/5/5
  */
 public class FiveDataStructure {
+
     public static void main(String[] args) {
         Jedis redis = new Jedis(Constant.HOST);
         //String
