@@ -16,11 +16,12 @@
         <module>springboot</module>
         <module>service-provider</module>
         <module>zuul-gateway</module>
-        <module>my-test</module>
         <module>socket</module>
         <module>quartz</module>
         <module>mysql</module>
         <module>rabbimq</module>
+        <module>socket</module>
+        <module>servlet-maven</module>
     </modules>
 
 

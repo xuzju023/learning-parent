@@ -36,3 +36,6 @@ eureka:
     prefer-ip-address: true #用ip作为host
 server:
   port: 10001
+#mybatis
+mybatis:
+  config-location: classpath*:mapper/*.xml
