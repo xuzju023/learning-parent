@@ -11,4 +11,19 @@
         <servlet-name>TestServlet</servlet-name>
         <url-pattern>/test</url-pattern>
     </servlet-mapping>
+
+
+    <filter>
+        <filter-name>BaseFilter</filter-name>
+        <filter-class>com.xzj.filter.BaseFilter</filter-class>
+        <init-param>
+            <param-name>variables</param-name>
+            <param-value>10086</param-value>
+        </init-param>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>BaseFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 </web-app>

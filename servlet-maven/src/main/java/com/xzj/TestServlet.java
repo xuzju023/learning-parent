@@ -12,10 +12,12 @@ import java.io.IOException;
  * @Description:
  * @Date: Created in 14:32 2019/6/21
  */
+
 public class TestServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("");
+        System.out.println("---");
     }
+
 }
