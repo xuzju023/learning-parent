@@ -1,9 +1,5 @@
 package thread.pool;
 
-import sun.java2d.SurfaceDataProxy;
-import thread.lock.Test;
-
-import java.nio.file.Watchable;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -40,6 +36,14 @@ public class ThreadPoolTest {
         countDown.countDown();
         threadPoolExecutor.shutdown();
 
+    }
+    
+    private class MyThead implements Runnable{
+        private int i;
+        @Override
+        public void run() {
+            
+        }
     }
 
 }
