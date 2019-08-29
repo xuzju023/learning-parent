@@ -11,6 +11,10 @@ spring:
     username: root
     password: root
     driver-class-name: com.mysql.jdbc.Driver
+  servlet:
+    multipart:
+      max-file-size: 10MB #multipart/form-data 单个文件大小
+      max-request-size: 12MB #multipart/form-data 整个内容大小
 
 
 #重试
@@ -36,6 +40,8 @@ eureka:
     prefer-ip-address: true #用ip作为host
 server:
   port: 10001
+  tomcat:
+    max-http-post-size: 8  # application/x-www-form-urlencoded  <=0 不限制
 #mybatis
 mybatis:
   config-location: classpath*:mapper/*.xml
