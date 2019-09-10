@@ -50,5 +50,10 @@ public class PathUtil {
         return buff.toString();
     }
 
-   
+    public static void main(String[] args) {
+        String a = null;
+        if (a==null||a.isEmpty()) {
+            System.out.println(a);
+        }
+    }
 }

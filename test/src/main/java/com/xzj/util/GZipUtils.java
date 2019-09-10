@@ -1,11 +1,4 @@
-package com.xzj.lerning.util;
-
-import com.alibaba.fastjson.JSONObject;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.client.RestTemplate;
+package com.xzj.util;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -16,31 +9,7 @@ import java.util.zip.GZIPOutputStream;
 
 public class GZipUtils {
     public enum Status {NORMAL, NOTENABLED, EXPIRE, FREEZE};
-    public static String str = "{\n" +
-            "   \"as\" : \"7BE58DD7-50B8-492c-AC0A-9ED8D74E8081\",\n" +
-            "   \"ci\" : {\n" +
-            "      \"av\" : \"8.0.0.1\",\n" +
-            "      \"tn\" : \"usertel\",\n" +
-            "      \"ui\" : \"userid\",\n" +
-            "      \"un\" : \"usertel\"\n" +
-            "   },\n" +
-            "   \"di\" : {\n" +
-            "      \"ch\" : \"Intel(R) Core(TM) i5-6500 CPU @ 3.20GHz\",\n" +
-            "      \"ci\" : \"64\",\n" +
-            "      \"cm\" : \"Intel(R) Core(TM) i5-6500 CPU @ 3.20GHz\",\n" +
-            "      \"di\" : \"87CDA954-1B56-4aff-875F-B313BAF57FF0\",\n" +
-            "      \"dsi\" : \"211.167.230.100\",\n" +
-            "      \"hs\" : \"    W -DCW6C6YAFRUVZ\",\n" +
-            "      \"mac\" : \"02-00-4c-4f-4f-50\",\n" +
-            "      \"ov\" : \"Microsoft Windows 7 Professional Service Pack 1 version 6.1.7601\",\n" +
-            "      \"tm\" : 12174\n" +
-            "   },\n" +
-            "   \"ds\" : {\n" +
-            "      \"sa\" : 1024\n" +
-            "   },\n" +
-            "   \"i\" : \"560da44a-8720-438a-b70b-7ef5d2f6f702\",\n" +
-            "   \"v\" : \"1.0.0.0\"\n" +
-            "}";
+ 
 
 
     public static final int BUFFER = 1024;
@@ -69,7 +38,7 @@ public class GZipUtils {
     /**
      * 数据压缩
      *
-     * @param is
+     * @param i s
      * @param os
      * @throws Exception
      */
@@ -149,24 +118,7 @@ public class GZipUtils {
         return true;
     }
 
-    public static void main(String[] args) throws Exception {
-        System.out.println(str);
-        byte[] data = str.getBytes();
-        data = compress(data);
-
-        RestTemplate restTemplate = new RestTemplate();
-        HttpHeaders headers = new HttpHeaders();
-        headers.add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_OCTET_STREAM_VALUE);
-        HttpEntity<byte[]> entity = new HttpEntity<byte[]>(data,headers);
-        //http://localhost:9999/config http://devtest.ibr.cc:20164/config
-        ResponseEntity<byte[]> response = restTemplate.postForEntity("http://devtest.ibr.cc:20164/config", entity, byte[].class);
-
-        byte[] body = response.getBody();
-        byte[] result = decompress(body);
-        String res = JSONObject.parseObject(result, String.class);
-        System.out.println(res);
-        //System.out.println(Status.NORMAL.ordinal());
-    }
+  
 
 
 }

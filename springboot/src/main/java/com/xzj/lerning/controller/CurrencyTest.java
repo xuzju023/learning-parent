@@ -1,12 +1,13 @@
 package com.xzj.lerning.controller;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.concurrent.*;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @Author: XuZhiJun
@@ -30,5 +31,9 @@ public class CurrencyTest {
             service.execute(thread);
         }
         return "ok";
+    }
+
+    public static void main(String[] args) {
+        System.out.println((double)1/1000/1000);
     }
 }
