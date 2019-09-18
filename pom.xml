@@ -22,8 +22,18 @@
         <module>rabbimq</module>
         <module>socket</module>
         <module>servlet-maven</module>
+        <module>test</module>
     </modules>
-
+    
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>1.2.51</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
 
     <build>

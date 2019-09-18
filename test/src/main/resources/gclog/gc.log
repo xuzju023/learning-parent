@@ -1,0 +1,16 @@
+Java HotSpot(TM) 64-Bit Server VM (25.144-b01) for windows-amd64 JRE (1.8.0_144-b01), built on Jul 21 2017 21:57:33 by "java_re" with MS VC++ 10.0 (VS2010)
+Memory: 4k page, physical 16683396k(9651680k free), swap 23236996k(12074652k free)
+CommandLine flags: -XX:InitialHeapSize=1073741824 -XX:MaxHeapSize=1073741824 -XX:MaxNewSize=536870912 -XX:MaxTenuringThreshold=6 -XX:NewSize=536870912 -XX:OldPLABSize=16 -XX:+PrintGC -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+UseCompressedClassPointers -XX:+UseCompressedOops -XX:+UseConcMarkSweepGC -XX:-UseLargePagesIndividualAllocation -XX:+UseParNewGC 
+1.052: [GC (Allocation Failure) 1.113: [ParNew: 411070K->896K(471872K), 0.0024087 secs] 411070K->896K(996160K), 0.0633445 secs] [Times: user=0.00 sys=0.00, real=0.06 secs] 
+1.166: [GC (Allocation Failure) 1.166: [ParNew: 420352K->1235K(471872K), 0.0016861 secs] 420352K->1235K(996160K), 0.0017677 secs] [Times: user=0.00 sys=0.00, real=0.00 secs] 
+1.236: [GC (Allocation Failure) 1.236: [ParNew: 420691K->1664K(471872K), 0.0016943 secs] 420691K->1664K(996160K), 0.0017729 secs] [Times: user=0.00 sys=0.00, real=0.00 secs] 
+1.427: [GC (Allocation Failure) 1.427: [ParNew: 421120K->1690K(471872K), 0.0017527 secs] 421120K->1690K(996160K), 0.0018452 secs] [Times: user=0.00 sys=0.00, real=0.00 secs] 
+5.301: [GC (Allocation Failure) 5.301: [ParNew: 421146K->2287K(471872K), 0.0023915 secs] 421146K->2287K(996160K), 0.0024525 secs] [Times: user=0.00 sys=0.00, real=0.00 secs] 
+Heap
+ par new generation   total 471872K, used 83516K [0x00000000c0000000, 0x00000000e0000000, 0x00000000e0000000)
+  eden space 419456K,  19% used [0x00000000c0000000, 0x00000000c4f53348, 0x00000000d99a0000)
+  from space 52416K,   4% used [0x00000000dccd0000, 0x00000000dcf0bcf8, 0x00000000e0000000)
+  to   space 52416K,   0% used [0x00000000d99a0000, 0x00000000d99a0000, 0x00000000dccd0000)
+ concurrent mark-sweep generation total 524288K, used 0K [0x00000000e0000000, 0x0000000100000000, 0x0000000100000000)
+ Metaspace       used 4367K, capacity 4666K, committed 4864K, reserved 1056768K
+  class space    used 480K, capacity 490K, committed 512K, reserved 1048576K
