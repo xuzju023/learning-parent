@@ -4,9 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
 
-import javax.jms.Destination;
 import javax.jms.JMSException;
 import javax.jms.Message;
+import javax.jms.ObjectMessage;
 import javax.jms.TextMessage;
 
 /**
@@ -19,10 +19,10 @@ public class MessageService {
     @Autowired
     private JmsTemplate jmsTemplate;
 
-    public void sendMessage(Destination destination, final String msg) {
-
+    public void sendMessage(String destination, final String msg) {
         jmsTemplate.convertAndSend(destination, msg);
     }
+
 
     /**
      * Receives a message from a queue.
@@ -30,15 +30,24 @@ public class MessageService {
      * @return Message text.
      * @throws JMSException
      */
-    public String readTextMessage(Destination destination) throws JMSException {
+    public String readTextMessage(String destination) throws JMSException {
 
         String message = null;
-
         Message msg = jmsTemplate.receive(destination);
         if (msg instanceof TextMessage) {
             message = ((TextMessage) msg).getText();
         }
 
+        return message;
+    }
+
+    private Object readObjectMessage(String destination) throws JMSException {
+        Object message = null;
+        message = null;
+        Message msg = jmsTemplate.receive(destination);
+        if (msg instanceof ObjectMessage) {
+            message = ((ObjectMessage) msg).getObject();
+        }
         return message;
     }
 }

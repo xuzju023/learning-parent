@@ -11,6 +11,6 @@ import javax.jms.MessageListener;
 public class SimpleMsgListener implements MessageListener {
     @Override
     public void onMessage(Message message) {
-        System.out.println("=====================================");
+        System.out.println("===============");
     }
 }

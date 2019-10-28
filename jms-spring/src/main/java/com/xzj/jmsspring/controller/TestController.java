@@ -1,5 +1,6 @@
 package com.xzj.jmsspring.controller;
 
+import com.xzj.jmsspring.model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +18,11 @@ public class TestController {
 
     @RequestMapping("/test")
     public String test() {
-        template.convertAndSend("queue-1", "你好啊");
+        //template.convertAndSend("queue-1", "你好啊");
+        Student stu = new Student();
+        stu.setName("X");
+        stu.setPassword("j");
+        template.convertAndSend("queue-1", stu);
         return "ok";
     }
 }
