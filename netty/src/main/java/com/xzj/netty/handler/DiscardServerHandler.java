@@ -1,21 +1,35 @@
 package com.xzj.netty.handler;
 
 import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
+import io.netty.util.ReferenceCountUtil;
+
+import java.util.concurrent.TimeUnit;
 
 public class DiscardServerHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) { // (2)
+        System.out.println("+1");
         ByteBuf in = (ByteBuf) msg;
         try {
-            ByteBuf byteBuf = Unpooled.wrappedBuffer("haha".getBytes());
-            ctx.writeAndFlush(byteBuf);
-        }finally {
-            //ReferenceCountUtil.release(msg); // (2)
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        System.out.println("+1");
+                        TimeUnit.SECONDS.sleep(10);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }).start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            ReferenceCountUtil.release(msg); // (2)
         }
-        
+
 
     }
 

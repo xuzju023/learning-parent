@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xzj.mapper.OrderMapper">
+    <insert id="insert" parameterType="com.xzj.model.Order">
+        insert into t_order(user_id,order_id) values (#{order.userId},#{order.orderId});
+    </insert>
+    <select id="selectOrder" parameterType="int" resultType="com.xzj.model.Order">
+        select user_id userId,order_id orderId from t_order where order_id=#{orderId};
+    </select>
+    <select id="selectOrderItem" parameterType="int" resultType="com.xzj.model.OrderItem">
+        select user_id userId,order_id orderId,description from t_order_item where order_id=#{orderId};
+    </select>
+</mapper>

@@ -4,7 +4,10 @@ package com.xzj.netty.handler;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.http.*;
+import io.netty.handler.codec.http.DefaultFullHttpResponse;
+import io.netty.handler.codec.http.FullHttpRequest;
+import io.netty.handler.codec.http.FullHttpResponse;
+import io.netty.handler.codec.http.HttpHeaderNames;
 import io.netty.util.ReferenceCountUtil;
 import io.netty.util.concurrent.Future;
 import io.netty.util.concurrent.GenericFutureListener;
@@ -40,13 +43,11 @@ public class BizHandler implements Runnable {
 
     @Override
     public void run() {
-        long startTime = System.currentTimeMillis();
         try {
             if (!(msg instanceof FullHttpRequest)) {
                 LOGGER.warn("massage is not http request!!!");
             }
-            FullHttpRequest req = (FullHttpRequest) msg;
-            HttpHeaders head = req.headers();
+            //TimeUnit.SECONDS.sleep(5);
             response(getResponseResult());
         } catch (Exception e) {
             responseIsGZip = false;

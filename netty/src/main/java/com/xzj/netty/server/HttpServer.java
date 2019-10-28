@@ -13,6 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.nio.channels.spi.SelectorProvider;
+import java.util.concurrent.atomic.AtomicInteger;
 
 
 public class HttpServer {
@@ -36,13 +37,13 @@ public class HttpServer {
 //        }*/
 
         if (bossGroup == null) {
-            NioEventLoopGroup nioEventLoopGroup = new NioEventLoopGroup(4, new DefaultThreadFactory("sdk-boss"), SelectorProvider.provider());
+            NioEventLoopGroup nioEventLoopGroup = new NioEventLoopGroup(1, new DefaultThreadFactory("sdk-boss"), SelectorProvider.provider());
             nioEventLoopGroup.setIoRatio(100);
             bossGroup = nioEventLoopGroup;
         }
 
         if (workerGroup == null) {
-            NioEventLoopGroup nioEventLoopGroup = new NioEventLoopGroup(8, new DefaultThreadFactory("sdk-work"), SelectorProvider.provider());
+            NioEventLoopGroup nioEventLoopGroup = new NioEventLoopGroup(1, new DefaultThreadFactory("sdk-work"), SelectorProvider.provider());
             workerGroup = nioEventLoopGroup;
         }
         try {
@@ -67,7 +68,7 @@ public class HttpServer {
     }
 
     protected static void initPipeline(ChannelPipeline pipeline) {
-        pipeline.addLast("handler", new HttpServerHandler());
+        pipeline.addLast("handler", new HttpServerHandler(new AtomicInteger(0)));
         pipeline.addBefore("handler", "encaps", new HttpObjectAggregator(10240000));
         pipeline.addBefore("encaps", "codec", new HttpServerCodec());
     }
@@ -82,7 +83,7 @@ public class HttpServer {
 
     protected static void initOptions(ServerBootstrap b) {
         b.option(ChannelOption.ALLOCATOR, PooledByteBufAllocator.DEFAULT);
-        b.option(ChannelOption.SO_BACKLOG, 1024);
+        b.option(ChannelOption.SO_BACKLOG, 1);
         b.childOption(ChannelOption.ALLOCATOR, PooledByteBufAllocator.DEFAULT);
         b.childOption(ChannelOption.SO_KEEPALIVE, false);
         b.childOption(ChannelOption.TCP_NODELAY, true);

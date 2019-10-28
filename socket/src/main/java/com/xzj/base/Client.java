@@ -1,10 +1,8 @@
 package com.xzj.base;
 
-import com.sun.xml.internal.messaging.saaj.util.ByteOutputStream;
 
 import java.io.*;
 import java.net.InetAddress;
-import java.net.InetSocketAddress;
 import java.net.Socket;
 
 /**
@@ -17,7 +15,7 @@ public class Client {
 
     public static void main(String[] args) throws Exception{
         InetAddress localHost = InetAddress.getLocalHost();
-        Socket socket =new Socket(localHost,8888);
+        Socket socket =new Socket(localHost,8081);
         //Socket socket = new Socket("localhost",8888);
         Thread thread = new Thread(new ClientThread(socket));
         thread.start();

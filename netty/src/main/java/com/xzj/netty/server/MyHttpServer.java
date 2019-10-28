@@ -10,6 +10,8 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.codec.http.HttpObjectAggregator;
 import io.netty.handler.codec.http.HttpServerCodec;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class MyHttpServer {
     public static void main(String[] args) throws InterruptedException {
         EventLoopGroup bossGroup = new NioEventLoopGroup();
@@ -22,7 +24,7 @@ public class MyHttpServer {
                         @Override
                         public void initChannel(SocketChannel ch) throws Exception {
                             ChannelPipeline pipeline = ch.pipeline();
-                            pipeline.addLast("handler",new HttpServerHandler());
+                            pipeline.addLast("handler",new HttpServerHandler(new AtomicInteger(0)));
                             pipeline.addBefore("handler", "encaps", new HttpObjectAggregator(10240000));
                             pipeline.addBefore("encaps", "codec", new HttpServerCodec());
                         }

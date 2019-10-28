@@ -1,0 +1,7 @@
+bean:
+  student1: com.xzj.Student
+    name: xzj
+    password: 123
+  student2: com.xzj.Student
+    name: hyh
+    password: 456

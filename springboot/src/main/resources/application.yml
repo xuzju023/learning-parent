@@ -44,4 +44,4 @@ server:
     max-http-post-size: 8  # application/x-www-form-urlencoded  <=0 不限制
 #mybatis
 mybatis:
-  config-location: classpath*:mapper/*.xml
+  mapper-locations: classpath*:mapper/*.xml

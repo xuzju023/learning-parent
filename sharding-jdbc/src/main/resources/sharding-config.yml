@@ -1,0 +1,47 @@
+dataSources:
+  ds0: !!com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.1.238:3306/order1
+    username: root
+    password: 12345678
+  ds1: !!com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.1.238:3306/order2
+    username: root
+    password: 12345678
+
+shardingRule:
+  tables:
+    t_order:
+      actualDataNodes: ds${0..1}.t_order
+      databaseStrategy:
+        inline:
+          shardingColumn: user_id
+          algorithmExpression: ds${user_id % 2}
+      tableStrategy:
+        none:
+      keyGenerator:
+        type: SNOWFLAKE
+        column: order_id
+    t_order_item:
+      actualDataNodes: ds${0..1}.t_order_item
+      databaseStrategy:
+        inline:
+          shardingColumn: user_id
+          algorithmExpression: ds${user_id % 2}
+      tableStrategy:
+        none:
+  bindingTables:
+    - t_order,t_order_item
+  broadcastTables:
+    - t_config
+
+  defaultDataSourceName: ds0
+  defaultTableStrategy:
+    none:
+  defaultKeyGenerator:
+    type: SNOWFLAKE
+    column: order_id
+
+props:
+  sql.show: true
