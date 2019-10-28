@@ -1,0 +1,5 @@
+server:
+  port: 30034
+activemq:
+  properties:
+    brokerURL: tcp://localhost:61616
