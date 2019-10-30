@@ -3,3 +3,6 @@ server:
 activemq:
   properties:
     brokerURL: tcp://localhost:61616
+spring:
+  activemq:
+    password: 
