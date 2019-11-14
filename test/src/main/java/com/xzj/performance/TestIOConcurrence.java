@@ -22,7 +22,7 @@ public class TestIOConcurrence {
 
     private void start() throws Exception {
         ThreadPoolExecutor pool = new ThreadPoolExecutor(800, 1000, 10, TimeUnit.SECONDS, new LinkedBlockingDeque<>());
-        CountDownLatch latch = new CountDownLatch(10);
+        CountDownLatch latch = new CountDownLatch(150);
         long begin = System.currentTimeMillis();
         for (int i = 0; i < 150; i++) {
             pool.execute(new MyThread(latch, i));
