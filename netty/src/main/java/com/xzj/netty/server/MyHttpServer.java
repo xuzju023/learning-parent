@@ -24,7 +24,7 @@ public class MyHttpServer {
                         @Override
                         public void initChannel(SocketChannel ch) throws Exception {
                             ChannelPipeline pipeline = ch.pipeline();
-                            pipeline.addLast("handler",new HttpServerHandler(new AtomicInteger(0)));
+                            pipeline.addLast("handler",new HttpServerHandler());
                             pipeline.addBefore("handler", "encaps", new HttpObjectAggregator(10240000));
                             pipeline.addBefore("encaps", "codec", new HttpServerCodec());
                         }

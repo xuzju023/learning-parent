@@ -14,6 +14,8 @@ import io.netty.util.concurrent.GenericFutureListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.concurrent.TimeUnit;
+
 import static io.netty.handler.codec.http.HttpResponseStatus.OK;
 import static io.netty.handler.codec.http.HttpVersion.HTTP_1_0;
 
@@ -47,7 +49,7 @@ public class BizHandler implements Runnable {
             if (!(msg instanceof FullHttpRequest)) {
                 LOGGER.warn("massage is not http request!!!");
             }
-            //TimeUnit.SECONDS.sleep(5);
+            TimeUnit.SECONDS.sleep(100);
             response(getResponseResult());
         } catch (Exception e) {
             responseIsGZip = false;

@@ -24,17 +24,7 @@ public class HttpServer {
     public static void main(String[] args) {
         EventLoopGroup bossGroup = getBossGroup();
         EventLoopGroup workerGroup = getWorkerGroup();
-//        /*if (bossGroup == null) {
-//            EpollEventLoopGroup epollEventLoopGroup = new EpollEventLoopGroup(4, new DefaultThreadFactory("sdk-boss"));
-//            epollEventLoopGroup.setIoRatio(100);
-//            bossGroup = epollEventLoopGroup;
-//        }
-//
-//        if (workerGroup == null) {
-//            EpollEventLoopGroup epollEventLoopGroup = new EpollEventLoopGroup(8, new DefaultThreadFactory("sdk-work"));
-//            epollEventLoopGroup.setIoRatio(70);
-//            workerGroup = epollEventLoopGroup;
-//        }*/
+
 
         if (bossGroup == null) {
             NioEventLoopGroup nioEventLoopGroup = new NioEventLoopGroup(1, new DefaultThreadFactory("sdk-boss"), SelectorProvider.provider());
@@ -57,8 +47,8 @@ public class HttpServer {
                 }
             });
             initOptions(b);
-            ChannelFuture f = b.bind("127.0.0.1",10061).sync();
-            logger.info("server start success bind port:{}",10061);
+            ChannelFuture f = b.bind("127.0.0.1", 10061).sync();
+            logger.info("server start success bind port:{}", 10061);
             f.channel().closeFuture().sync();
         } catch (Exception e) {
             logger.error("server start exception", e);
@@ -68,8 +58,8 @@ public class HttpServer {
     }
 
     protected static void initPipeline(ChannelPipeline pipeline) {
-        pipeline.addLast("handler", new HttpServerHandler(new AtomicInteger(0)));
-        pipeline.addBefore("handler", "encaps", new HttpObjectAggregator(10240000));
+        pipeline.addLast("handler", new HttpServerHandler());
+        pipeline.addBefore("handler", "encaps", new HttpObjectAggregator(1024));
         pipeline.addBefore("encaps", "codec", new HttpServerCodec());
     }
 
