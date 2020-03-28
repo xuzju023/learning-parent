@@ -15,7 +15,7 @@ public class Server {
     public static List<Socket> clients=new ArrayList<>();
 
     public static void main(String[] args) throws Exception {
-        ServerSocket socketServer = new ServerSocket(8888);
+        ServerSocket socketServer = new ServerSocket(8082,1);
         while (true) {
             //每连接一个客户端添加一个线程
             Socket socket = socketServer.accept();

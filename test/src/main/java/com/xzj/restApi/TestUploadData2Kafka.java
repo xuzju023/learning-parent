@@ -12,72 +12,52 @@ import com.xzj.util.GZipUtils;
  **/
 public class TestUploadData2Kafka {
     public static String uploadData = "{\n" +
-            "    \"i\": \"c278e388-8ecb-42c5-a507-f635f053dfad\",\n" +
-            "    \"as\": \"0A223931-A7AA-400b-AA74-E08984C2CB1B\",\n" +
-            "    \"di\": \"106.121.128.66\",\n" +
-            "    \"e\": [\n" +
-            "        {\n" +
-            "            \"t\": 1,\n" +
-            "            \"st\": \"1568253584691\",\n" +
-            "            \"v\": {\n" +
-            "                \"v\": \"v9.0.0.2\",\n" +
-            "                \"di\": {\n" +
-            "                    \"ch\": \"Intel(R) Core(TM) i5-4590 CPU @ 3.30GHz\",\n" +
-            "                    \"ci\": 64,\n" +
-            "                    \"cm\": \"Intel(R) Core(TM) i5-4590 CPU @ 3.30GHz\",\n" +
-            "                    \"di\": \"779D5F6E-456E-4a05-B837-D2EC7566F1DC\",\n" +
-            "                    \"dsi\": \"192.168.4.200\",\n" +
-            "                    \"hs\": \"     WD-WCC6Y6KZ8NTU\",\n" +
-            "                    \"mac\": \"8c-ec-4b-8d-17-78\",\n" +
-            "                    \"ov\": \"Microsoft Windows 10 Insider Preview Professional  version 10.0.17763\",\n" +
-            "                    \"tm\": 16211\n" +
-            "                },\n" +
-            "                \"ci\": {\n" +
-            "                    \"av\": \"8.0.1\",\n" +
-            "                    \"tn\": \"15611750917\",\n" +
-            "                    \"ui\": \"1386\",\n" +
-            "                    \"un\": \"wangxiaoxiao15611750917\"\n" +
-            "                },\n" +
-            "                \"ds\": {\n" +
-            "                    \"sa\": 1024,\n" +
-            "                    \"sc\": 40,\n" +
-            "                    \"ame\": 100,\n" +
-            "                    \"ac\": 30,\n" +
-            "                    \"sas\": 300\n" +
-            "                },\n" +
-            "                \"ru\": \"http://www.reeiss211.com/v1v1?username=12345678&token=12345678\",\n" +
-            "                \"si\": 3688,\n" +
-            "                \"li\": \"118.194.54.131\",\n" +
-            "                \"lp\": 8080,\n" +
-            "                \"ti\": \"124.108.103.104\",\n" +
-            "                \"tp\": 443,\n" +
-            "                \"dt\": 4578952,\n" +
-            "                \"ct\": 12345678,\n" +
-            "                \"sti\": \"12345678\",\n" +
-            "                \"rt\": \"8000\",\n" +
-            "                \"rti\": \"6666668\",\n" +
-            "                \"dti\": \"78922223\",\n" +
-            "                \"et\": \"1568253584691\",\n" +
-            "                \"cna\": [\n" +
-            "                    \"www.a.shifen.com\"\n" +
-            "                ],\n" +
-            "                \"pt\": \"5\",\n" +
-            "                \"sc\": \"200\",\n" +
-            "                \"se\": \"0\",\n" +
-            "                \"dsi\": \"211.167.230.100\",\n" +
-            "                \"rh\": \"GET / HTTP/1.1rnsd: rnUser-Agent: Mozilla/5E.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.116 Safari/537.36rnHost: www.yahoo.comrnrn\",\n" +
-            "                \"rd\": \"89760\",\n" +
-            "                \"rhe\": \"HTTP/1.1 200 OKrnServer: nginx/1.9.5rnDate: Tue, 17 Sep 2019 08:03:09 GMTrnContent-Type: application/octet-stream;charset=UTF-8rnContent-Length: 55rnConnection: keep-alivernrn\",\n" +
-            "                \"rds\": \"700800\"\n" +
-            "            }\n" +
-            "        }\n" +
-            "    ]\n" +
+            "   \"as\" : \"F6651B53-DFBF-4606-B73D-3BD9B4AAC0A6\",\n" +
+            "   \"di\" : \"111.193.180.156\",\n" +
+            "   \"e\" : [\n" +
+            "      {\n" +
+            "         \"st\" : 1571280490657,\n" +
+            "         \"t\" : 3,\n" +
+            "         \"v\" : {\n" +
+            "            \"ci\" : {\n" +
+            "               \"av\" : \"8.0.0.3\",\n" +
+            "               \"tn\" : \"135555\",\n" +
+            "               \"ui\" : \"yuanid\",\n" +
+            "               \"un\" : \"135555\"\n" +
+            "            },\n" +
+            "            \"dfi\" : \"1\",\n" +
+            "            \"di\" : {\n" +
+            "               \"ch\" : \"Intel(R) Core(TM) i5-8259U CPU @ 2.30GHz\",\n" +
+            "               \"ci\" : 64,\n" +
+            "               \"cm\" : \"Intel(R) Core(TM) i5-8259U CPU @ 2.30GHz\",\n" +
+            "               \"di\" : \"467FAE02-960A-4902-B73F-10F6A23D5915\",\n" +
+            "               \"dsi\" : \"10.211.55.1\",\n" +
+            "               \"hs\" : \"474e3435474150314a4e344641314e5354434d36\",\n" +
+            "               \"mac\" : \"00-1c-42-1e-76-f2\",\n" +
+            "               \"ov\" : \"Microsoft Windows 7 Professional  version 6.1.7600\",\n" +
+            "               \"tm\" : 4095\n" +
+            "            },\n" +
+            "            \"ds\" : {\n" +
+            "               \"ac\" : \"9.129420\",\n" +
+            "               \"ame\" : \"54.914063\",\n" +
+            "               \"sa\" : \"2147\",\n" +
+            "               \"sas\" : \"235562\",\n" +
+            "               \"sc\" : \"9.375000\",\n" +
+            "               \"su\":\"111\"\n" +
+            "            },\n" +
+            "            \"ei\" : \"test\",\n" +
+            "            \"s\" : \"sessionxz222\",\n" +
+            "            \"st\" : 1571626103000,\n" +
+            "            \"v\" : \"8.0.0.3\"\n" +
+            "         }\n" +
+            "      }\n" +
+            "   ],\n" +
+            "   \"i\" : \"3bcff9ad-5bd9-4af5-8241-468a729edf91\"\n" +
             "}";
 
 
 
     public static void main(String[] args) throws Exception {
-        //System.out.println(uploadData);
         upload();
        
     }
@@ -98,6 +78,7 @@ public class TestUploadData2Kafka {
         //upload请求
         dataTransfer.setReqType(2);
         dataTransfer.setAdditionalInfo("deviceIp" + ":" + deviceIp);
+        dataTransfer.setAdditionalInfo("GUID" + ":" + "12335s");
         return dataTransfer;
     }
 

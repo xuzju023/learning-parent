@@ -23,9 +23,16 @@
         <module>socket</module>
         <module>servlet-maven</module>
         <module>test</module>
+        <module>kafka</module>
+        <module>test2</module>
+        <module>kafka-spring</module>
+        <module>http-client</module>
+        <module>netty</module>
+        <module>data-spout</module>
     </modules>
     
     <dependencyManagement>
+        
         <dependencies>
             <dependency>
                 <groupId>com.alibaba</groupId>

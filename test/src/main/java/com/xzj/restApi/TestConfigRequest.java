@@ -17,7 +17,7 @@ public class TestConfigRequest {
     public static String str = "{\n" +
             "   \"as\" : \"296E81FE-E0E6-452c-BAEE-2C8712F6FB9D1\",\n" +
             "   \"ci\" : {\n" +
-            "      \"av\" : \"3.6\",\n" +
+            "      \"av\" : \"2.0.7\",\n" +
             "      \"tn\" : \"111111111111\",\n" +
             "      \"ui\" : \"11555\",\n" +
             "      \"un\" : \"111111111111\"\n" +
@@ -36,28 +36,30 @@ public class TestConfigRequest {
             "   \"ds\" : {\n" +
             "      \"sa\" : 1024\n" +
             "   },\n" +
-            "   \"i\" : \"0af80d0a-120c-4671-89e8-71031eebc627\",\n" +
-            "   \"v\" : \"1.0.0.9\"\n" +
+            "   \"i\" : \"560da44a-8720-438a-b70b-7ef5d2f6f702\",\n" +
+            "   \"v\" : \"10085\"\n" +
             "}";
     public static void main(String[] args) throws Exception {
-        System.out.println(str);
-        byte[] data = str.getBytes();
-        data = GZipUtils.compress(data);
+        for (int i = 0; i <1 ; i++) {
 
-        RestTemplate restTemplate = new RestTemplate();
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Br-AcCept-Encoding","gzip");
-        headers.add("ProtoTYPE","json");
-        headers.add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_OCTET_STREAM_VALUE);
-        HttpEntity<byte[]> entity = new HttpEntity<byte[]>(data,headers);
-        //http://localhost:9999/config http://devtest.ibr.cc:20164/config
-        //ResponseEntity<byte[]> response = restTemplate.postForEntity("http://devtest.ibr.cc:20164/config", entity, byte[].class);
-        ResponseEntity<byte[]> response = restTemplate.postForEntity("http://localhost:9999/config", entity, byte[].class);
+           // System.out.println(str);
+            byte[] data = str.getBytes();
+            data = GZipUtils.compress(data);
 
-        byte[] body = response.getBody();
-        byte[] result = GZipUtils.decompress(body);
-        String res = JSONObject.parseObject(result, String.class);
-        System.out.println(res);
-        //System.out.println(Status.NORMAL.ordinal());
+            RestTemplate restTemplate = new RestTemplate();
+            HttpHeaders headers = new HttpHeaders();
+            headers.add("Br-AcCept-Encoding", "gzip");
+            headers.add("ProtoTYPE", "json");
+            headers.add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_OCTET_STREAM_VALUE);
+            HttpEntity<byte[]> entity = new HttpEntity<byte[]>(data, headers);
+            //http://localhost:9999/config http://devtest.ibr.cc:20164/config
+            ResponseEntity<byte[]> response = restTemplate.postForEntity("http://devtest.ibr.cc:20164/config", entity, byte[].class);
+            //ResponseEntity<byte[]> response = restTemplate.postForEntity("http://localhost:9999/config", entity, byte[].class);
+
+            byte[] body = response.getBody();
+            byte[] result = GZipUtils.decompress(body);
+            String res = JSONObject.parseObject(result, String.class);
+            System.out.println(res);
+        }
     }
 }

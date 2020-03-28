@@ -7,6 +7,6 @@ package com.xzj.constants;
  **/
 public class Constants {
     public final  static  String KAFKA_ENCRYPT_TYPE="SASL";
-    public final  static  String KAFKA_SERVER_ADD="192.168.1.103:9092,192.168.1.104:9092,192.168.1.105:9092";
+    public final  static  String  KAFKA_SERVER_ADD="192.168.1.103:9092,192.168.1.104:9092,192.168.1.105:9092";
     
 }

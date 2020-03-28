@@ -2,7 +2,6 @@ package com.xzj.base;
 
 
 import java.io.*;
-import java.net.InetAddress;
 import java.net.Socket;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.LinkedBlockingDeque;
@@ -14,54 +13,46 @@ import java.util.concurrent.TimeUnit;
  * @Description:
  * @Date: Created in 10:14 2019/6/10
  */
-public class Client {
+public class Client implements Runnable {
+    private CountDownLatch latch;
+    private int num;
 
-    public static void main(String[] args) throws Exception {
-        ThreadPoolExecutor executor = new ThreadPoolExecutor(32, 32, 20, TimeUnit.SECONDS, new LinkedBlockingDeque<>());
-        CountDownLatch countDownLatch = new CountDownLatch(1);
-        for (int i = 0; i < 1; i++) {
-            try {
-                Socket socket
-                        = new Socket("127.0.0.1", 10061);
-                executor.execute(new Thread(new ClientThread(countDownLatch, i, socket)));
-            } catch (IOException e) {
-                countDownLatch.countDown();
-                e.printStackTrace();
-            }
-        }
-        TimeUnit.HOURS.sleep(1);
-
+    public Client(CountDownLatch latch, int num) {
+        this.latch = latch;
+        this.num = num;
     }
 
-    static class ClientThread implements Runnable {
-        private int num;
-        private Socket socket;
-        private CountDownLatch countDownLatch;
+    @Override
+    public void run() {
+        try {
+            for (int i = 0; i < 1000; i++) {
 
-        public ClientThread(CountDownLatch countDownLatch, int num, Socket socket) {
-            this.countDownLatch = countDownLatch;
-            this.num = num;
-            this.socket = socket;
-        }
-
-        @Override
-        public void run() {
-            try {
-                countDownLatch.await();
-                System.out.println(num);
+                latch.await();
+                Socket socket = new Socket("127.0.0.1", 9999);
                 //发送给服务端
                 OutputStream outputStream = socket.getOutputStream();
                 PrintWriter writer = new PrintWriter(outputStream, true);
-                InputStream in = new ByteArrayInputStream((num + "").getBytes());
+                ByteArrayInputStream in = new ByteArrayInputStream((num + "").getBytes());
                 BufferedReader reader = new BufferedReader(new InputStreamReader(in));
                 writer.println(reader.readLine());
                 writer.flush();
-                // socket.close();
-
-
-            } catch (Exception e) {
-                e.printStackTrace();
+                socket.close();
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
+
+    public static void main(String[] args) throws Exception {
+        ThreadPoolExecutor pool = new ThreadPoolExecutor(20, 500, 10, TimeUnit.SECONDS, new LinkedBlockingDeque<>());
+        CountDownLatch latch = new CountDownLatch(20);
+        for (int i = 0; i < 20; i++) {
+            pool.execute(new Client(latch, i));
+            latch.countDown();
+        }
+        TimeUnit.HOURS.sleep(1);
+        // pool.shutdown();
+    }
+
+
 }

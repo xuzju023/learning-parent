@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>假冒beJson</title>
+	<link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/bootstrap-3.3.4.css">
+	<link href="css/jquery.json-viewer.css" type="text/css" rel="stylesheet" />
+	<style>
+		body {
+			background-color: #F7F7F7
+		}
+
+		#json-renderer {
+			padding: 20px;
+			height: 714px;
+		}
+		.input-group{
+			margin: 20px 0;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="jq22-container">
+		<div class="container-fluid" style="margin-top: 1em;">
+			<div class="row" style="padding-top: 30px;padding-bottom: 30px;">
+				<div class="col-md-5 col-md-offset-1">
+					<label class="checkbox-inline"><input type="checkbox" id="collapsed">收缩所有的节点 </label>
+					<label class="checkbox-inline"><input type="checkbox" id="with-quotes">为Key添加双引号 </label>
+					<button id="btn-json-viewer" class="btn btn-info" title="转换Json数据" style="margin-left: 30px;">转换Json数据</button>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4 col-md-offset-1">
+					<textarea class="form-control" id="json-input" rows="35"></textarea>
+				</div>
+				<div class="col-md-4">
+					<pre id="json-renderer"></pre>
+				</div>
+				<div class="col-md-2">
+					<div class="input-group" style="margin-top: 200px;">
+						<span class="input-group-addon" id="basic-addon1">目标Url</span>
+						<input type="text" class="form-control" id="url" aria-describedby="basic-addon3">
+					</div>
+					<div class="input-group">
+						<span class="input-group-addon" id="basic-addon2">并发数</span>
+						<input type="number" max="16" class="form-control" id="concurrency" aria-describedby="basic-addon3">
+						
+					</div>
+					<div class="input-group">
+						<span class="input-group-addon" id="basic-addon3">持续时间</span>
+						<input type="number" class="form-control" id="time" aria-describedby="basic-addon3">
+						<span class="input-group-addon">s</span>
+					</div>
+					<!-- <div class="input-group"> -->
+						<button id="send-data" class="btn btn-success btn-lg  btn-block" title="开始发送">发送</button>
+					<!-- </div> -->
+					
+				</div>
+			</div>
+		</div>
+
+		<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+		<script src="js/jquery.json-viewer.js"></script>
+		<script type="text/javascript">
+			$(function () {
+				
+				$('#btn-json-viewer').click(function () {
+					try {
+						var input = eval('(' + $('#json-input').val() + ')');
+					}
+					catch (error) {
+						return alert("Cannot eval JSON: " + error);
+					}
+					var options = {
+						collapsed: $('#collapsed').is(':checked'),
+						withQuotes: $('#with-quotes').is(':checked')
+					};
+					$('#json-renderer').jsonViewer(input, options);
+				});
+
+				// Display JSON sample on load
+				// $('#btn-json-viewer').click();
+				$('#send-data').on("click",function(){
+					var url = $('#url').val()
+					var concurrency = $('#concurrency').val()
+					var time = $('#time').val()
+					if(concurrency!=="" && parseInt(concurrency)>16){
+						return alert("并发数不能大于16");
+					}
+					if(url===""){
+						return alert("请填写目标Url用来发送数据");
+					}
+					try {
+						var input = eval('(' + $('#json-input').val() + ')');
+					}
+					catch (error) {
+						return alert("请格式化JSON后再提交");
+					}
+					$.ajax({
+						type: "POST",
+						url: "http://127.0.0.1:8088/sendData",
+						contentType: "application/json" ,
+						data: JSON.stringify({
+							concurrenceNum: concurrency === ""? "" : parseInt(concurrency), 
+							time:  time === ""? "" : parseInt(time),
+							url: url,
+							data: input
+						}),
+						dataType: "json",
+						success: function(data){
+							
+						}
+					})
+				})
+			});
+		</script>
+</body>
+
+</html>
