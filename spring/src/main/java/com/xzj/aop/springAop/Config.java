@@ -8,4 +8,5 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 @ComponentScan(basePackageClasses = {IBuy.class})
 @EnableAspectJAutoProxy(proxyTargetClass = true)
 public class Config {
+    //
 }
