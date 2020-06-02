@@ -7,7 +7,7 @@ public class Test {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
         Boy boy = context.getBean("boy",Boy.class);
         Girl girl = (Girl) context.getBean("girl");
-        boy.buy();
+        boy.buy();//
         girl.buy();
         //
     }
