@@ -14,30 +14,33 @@ import java.util.concurrent.TimeUnit;
  * @Date: Created in 10:14 2019/6/10
  */
 public class Client implements Runnable {
-    private CountDownLatch latch;
-    private int num;
 
-    public Client(CountDownLatch latch, int num) {
-        this.latch = latch;
-        this.num = num;
-    }
 
     @Override
     public void run() {
         try {
-            for (int i = 0; i < 1000; i++) {
 
-                latch.await();
-                Socket socket = new Socket("127.0.0.1", 9999);
-                //发送给服务端
-                OutputStream outputStream = socket.getOutputStream();
-                PrintWriter writer = new PrintWriter(outputStream, true);
-                ByteArrayInputStream in = new ByteArrayInputStream((num + "").getBytes());
-                BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-                writer.println(reader.readLine());
-                writer.flush();
-                socket.close();
-            }
+            Socket socket = new Socket("127.0.0.1", 9999);
+            //发送给服务端
+            //BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+            OutputStream outputStream = socket.getOutputStream();
+            InputStream inputStream = socket.getInputStream();
+            new Thread(() -> {
+                try {
+                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+                    System.out.println(bufferedReader.readLine());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }).start();
+            outputStream.write("nihao".getBytes());
+            outputStream.flush();
+            outputStream.close();
+            //socket.close();
+//            PrintWriter writer = new PrintWriter(outputStream, true);
+//            writer.write("你好");
+//            writer.flush();
+//            socket.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -45,11 +48,7 @@ public class Client implements Runnable {
 
     public static void main(String[] args) throws Exception {
         ThreadPoolExecutor pool = new ThreadPoolExecutor(20, 500, 10, TimeUnit.SECONDS, new LinkedBlockingDeque<>());
-        CountDownLatch latch = new CountDownLatch(20);
-        for (int i = 0; i < 20; i++) {
-            pool.execute(new Client(latch, i));
-            latch.countDown();
-        }
+            pool.execute(new Client());
         TimeUnit.HOURS.sleep(1);
         // pool.shutdown();
     }

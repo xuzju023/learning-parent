@@ -11,24 +11,22 @@
     <modules>
         <module>lambda</module>
         <module>redis</module>
-        <module>thread</module>
         <module>eureka-server</module>
         <module>springboot</module>
-        <module>service-provider</module>
-        <module>zuul-gateway</module>
         <module>socket</module>
         <module>quartz</module>
-        <module>mysql</module>
         <module>rabbimq</module>
         <module>socket</module>
-        <module>servlet-maven</module>
         <module>test</module>
         <module>kafka</module>
-        <module>test2</module>
         <module>kafka-spring</module>
         <module>http-client</module>
         <module>netty</module>
         <module>data-spout</module>
+        <module>thread</module>
+        <module>app</module>
+        <module>springboot-security</module>
+        <module>spring</module>
     </modules>
     
     <dependencyManagement>
