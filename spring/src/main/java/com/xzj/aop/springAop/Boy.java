@@ -1,7 +1,7 @@
 package com.xzj.aop.springAop;
 
 import org.springframework.stereotype.Component;
-
+//
 @Component
 public class Boy implements IBuy {
     @Override
