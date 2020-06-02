@@ -8,6 +8,6 @@ public class Test {
         Boy boy = context.getBean("boy",Boy.class);
         Girl girl = (Girl) context.getBean("girl");
         boy.buy();//
-        girl.buy();
+        girl.buy();//
     }
 }
