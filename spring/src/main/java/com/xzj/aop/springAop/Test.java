@@ -10,5 +10,6 @@ public class Test {
         boy.buy();//
         girl.buy();
         //
+
     }
 }
